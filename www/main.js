@@ -42,4 +42,14 @@ $(document).ready(function () {
         $("#SiriWave").attr("hidden", false);
         eel.allCommands();
     });
+
+    function docKeyUp(e) {
+        if (e.key === 'j' && e.metaKey){
+            eel.playAssistantSound()
+            $("#Oval").attr("hidden", true);
+            $("#SiriWave").attr("hidden", false);
+            eel.allCommands()
+        }
+    }
+    document.addEventListener('keyup', docKeyUp, false);
 });
