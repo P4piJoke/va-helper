@@ -3,6 +3,7 @@ import sqlite3
 import struct
 import time
 import webbrowser
+from hugchat import hugchat
 from playsound import playsound
 import pvporcupine
 import pyaudio
@@ -107,3 +108,13 @@ def hotword():
             audio_stream.close()
         if paud is not None:
             paud.terminate()
+
+def chatBot(query):
+    user_input = query.lower()
+    chatbot = hugchat.ChatBot(cookie_path='engine\\cookies.json')
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
+    response = chatbot.chat(user_input)
+    print(response)
+    speak(response)
+    return response

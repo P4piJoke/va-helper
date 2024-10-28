@@ -4,6 +4,7 @@ import eel
 import time
 
 def speak(text):
+    text = str(text)
     engine = pyttsx3.init('sapi5')
     engine.setProperty('rate', 174)
     eel.DisplayMessage(text)
@@ -52,9 +53,11 @@ def allCommands(message=1):
             from engine.features import playYoutube
             playYoutube(query)
         else:
-            print("not run")
+            from engine.features import chatBot
+            chatBot(query)
 
     except Exception as e:
         print('Error')
+        print(e)
         
     eel.ShowHood()
